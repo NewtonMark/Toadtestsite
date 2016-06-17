@@ -1,0 +1,36 @@
+// Image switcher code
+var myImage = document.querySelector('img');
+
+myImage.onclick = function() {
+    var mySrc = myImage.getAttribute('src');
+    if(mySrc === 'images/toad.jpg') { /*this line was my first 'mystery error'
+i couldn't understand why the image wouldn't switch. it took me a long time to realise
+i had written .jgp instead of .jpg, the sense of relief at understanding was immense
+    */
+      myImage.setAttribute ('src','images/toad2.jpg');
+    } else {
+      myImage.setAttribute ('src','images/toad.jpg');
+    }
+}
+
+//Personalized welcome message code
+
+var myButton = document.querySelector('button');
+var name2 = document.querySelector('n');
+
+function setToadName() {
+  var toadsname = prompt("Please enter the toad's name.");
+  localStorage.setItem('name', toadsname);
+  name2.textContent = toadsname;
+}
+
+if(!localStorage.getItem('name')) {
+  setToadName();
+} else {
+  var storedName = localStorage.getItem('name');
+  name2.textContent = storedName;
+}
+
+myButton.onclick = function() {
+  setToadName();
+}
